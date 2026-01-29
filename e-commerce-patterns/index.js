@@ -33,56 +33,58 @@ book.describe();
 laptop.describe();
 console.log("\n");
 
-
 // --- Part 3A: Decorator Pattern ---
-// console.log("--- 3A: Decorator Pattern ---");
-// let myBook = factory.createProduct('book', { title: 'Design Patterns', price: 45 });
-// myBook = new GiftWrapDecorator(myBook);
-// myBook = new ExtendedWarrantyDecorator(myBook);
-// console.log(`Final Price: $${myBook.getPrice()}`);
-// console.log(`Final Description: ${myBook.getDescription()}`);
-// console.log("\n");
+console.log("--- 3A: Decorator Pattern ---");
+let myBook = factory.createProduct('book', { title: 'Design Patterns', price: 45 });
+myBook = new GiftWrapDecorator(myBook);
+myBook = new ExtendedWarrantyDecorator(myBook);
+console.log(`Final Price: $${myBook.getPrice()}`);
+console.log(`Final Description: ${myBook.getDescription()}`);
+console.log("\n");
 
 // --- Part 3B: Facade Pattern ---
-// console.log("--- 3B: Facade Pattern ---");
-// const checkout = new CheckoutFacade();
-// const orderDetails = { userId: 'user-123', productIds: [1, 3], shippingInfo: '123 Main St' };
-// checkout.placeOrder(orderDetails);
-// console.log("\n");
+console.log("--- 3B: Facade Pattern ---");
+const checkout = new CheckoutFacade();
+const orderDetails = { userId: 'user-123', productIds: [1, 3], shippingInfo: '123 Main St' };
+checkout.placeOrder(orderDetails);
+console.log("\n");
 
 // --- Part 4A: Strategy Pattern ---
-// console.log("--- 4A: Strategy Pattern ---");
-// const packageDetails = { weight: 2.5, dimensions: { width: 10, height: 8, depth: 3 } };
-// const calculator = new ShippingCalculator();
-// calculator.setStrategy(new FlatRateStrategy());
-// console.log(`Flat Rate Shipping Cost: $${calculator.calculate(packageDetails)}`);
-// calculator.setStrategy(new WeightBasedStrategy());
-// console.log(`Weight-Based Shipping Cost: $${calculator.calculate(packageDetails)}`);
-// console.log("\n");
+console.log("--- 4A: Strategy Pattern ---");
+const packageDetails = { weight: 2.5, dimensions: { width: 10, height: 8, depth: 3 } };
+const calculator = new ShippingCalculator();
+calculator.setStrategy(new FlatRateStrategy());
+console.log(`Flat Rate Shipping Cost: $${calculator.calculate(packageDetails)}`);
+calculator.setStrategy(new WeightBasedStrategy());
+console.log(`Weight-Based Shipping Cost: $${calculator.calculate(packageDetails)}`);
+console.log("\n");
 
 // --- Part 4B: Command Pattern ---
-// console.log("--- 4B: Command Pattern ---");
-// const invoker = new CommandInvoker();
-// const cart = new CartService();
-// const factory = new ProductFactory();
-// const newLaptop = factory.createProduct('electronic', { model: 'MacBook Pro', price: 2500 });
-// const command = new AddToCartCommand(cart, newLaptop);
-// console.log("Initial Cart:", cart.getProducts());
-// invoker.executeCommand(command);
-// console.log("Cart after executing command:", cart.getProducts());
-// invoker.undoLastCommand();
-// console.log("Cart after undoing command:", cart.getProducts());
-// console.log("\n");
+console.log("--- 4B: Command Pattern ---");
+const invoker = new CommandInvoker();
+const cart = new CartService();
+const newLaptop = factory.createProduct('electronic', { model: 'MacBook Pro', price: 2500 });
+const command = new AddToCartCommand(cart, newLaptop);
+
+console.log("Initial Cart:", cart.getProducts());
+invoker.executeCommand(command);
+console.log("Cart after executing command:", cart.getProducts());
+invoker.undoLastCommand();
+console.log("Cart after undoing command:", cart.getProducts());
+console.log("\n");
 
 // --- Part 4C: Observer Pattern ---
-// console.log("--- 4C: Observer Pattern ---");
-// const orderTracker = new OrderTracker('order-456');
-// const emailNotifier = new EmailNotifier();
-// const dashboardNotifier = new DashboardNotifier();
-// orderTracker.addObserver(emailNotifier);
-// orderTracker.addObserver(dashboardNotifier);
-// orderTracker.updateStatus('Processing');
-// console.log("---");
-// orderTracker.removeObserver(emailNotifier);
-// orderTracker.updateStatus('Shipped');
-// console.log("\n");
+console.log("--- 4C: Observer Pattern ---");
+const orderTracker = new OrderTracker('order-456');
+const emailNotifier = new EmailNotifier();
+const dashboardNotifier = new DashboardNotifier();
+
+orderTracker.addObserver(emailNotifier);
+orderTracker.addObserver(dashboardNotifier);
+orderTracker.updateStatus('Processing');
+
+console.log("---");
+
+orderTracker.removeObserver(emailNotifier);
+orderTracker.updateStatus('Shipped');
+console.log("\n");

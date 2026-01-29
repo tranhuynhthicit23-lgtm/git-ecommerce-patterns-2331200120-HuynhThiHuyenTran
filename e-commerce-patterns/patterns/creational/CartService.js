@@ -44,9 +44,12 @@ class CartService {
     this.products.push(product);
   }
 
-  removeProduct(productId) {
-    this.products = this.products.filter(p => p.id !== productId);
+removeProduct(product) {
+  const index = this.products.lastIndexOf(product);
+  if (index !== -1) {
+    this.products.splice(index, 1);
   }
+}
 
   getProducts() {
     return this.products;
