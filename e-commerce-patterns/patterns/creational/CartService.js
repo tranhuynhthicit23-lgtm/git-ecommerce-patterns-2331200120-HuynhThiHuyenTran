@@ -6,23 +6,51 @@
 //    and assign the new instance to `instance`.
 // 5. Export the class.
 
+// class CartService {
+//     constructor() {
+//         // ... your implementation here ...
+//         this.products = [];
+//     }
+
+//     addProduct(product) {
+//         this.products.push(product);
+//     }
+
+//     removeProduct(productId) {
+//         this.products = this.products.filter(p => p.id !== productId);
+//     }
+
+//     getProducts() {
+//         return this.products;
+//     }
+// }
+
+// export { CartService };
+// patterns/creational/CartService.js
+
+let instance = null;
+
 class CartService {
-    constructor() {
-        // ... your implementation here ...
-        this.products = [];
+  constructor() {
+    if (instance) {
+      return instance;
     }
 
-    addProduct(product) {
-        this.products.push(product);
-    }
+    this.products = [];
+    instance = this;
+  }
 
-    removeProduct(productId) {
-        this.products = this.products.filter(p => p.id !== productId);
-    }
+  addProduct(product) {
+    this.products.push(product);
+  }
 
-    getProducts() {
-        return this.products;
-    }
+  removeProduct(productId) {
+    this.products = this.products.filter(p => p.id !== productId);
+  }
+
+  getProducts() {
+    return this.products;
+  }
 }
 
 export { CartService };
